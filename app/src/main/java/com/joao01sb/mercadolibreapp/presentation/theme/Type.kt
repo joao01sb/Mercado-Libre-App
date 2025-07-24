@@ -1,4 +1,4 @@
-package com.joao01sb.mercadolibreapp.ui.theme
+package com.joao01sb.mercadolibreapp.presentation.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

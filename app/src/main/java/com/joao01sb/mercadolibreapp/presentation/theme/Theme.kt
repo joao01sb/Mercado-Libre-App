@@ -1,6 +1,5 @@
-package com.joao01sb.mercadolibreapp.ui.theme
+package com.joao01sb.mercadolibreapp.presentation.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
