@@ -1,5 +1,8 @@
-package com.joao01sb.mercadolibreapp.domain.model.category
+package com.joao01sb.mercadolibreapp.data.remote.response
 
+import com.joao01sb.mercadolibreapp.data.remote.model.category.CategoryPath
+import com.joao01sb.mercadolibreapp.data.remote.model.category.CategorySettings
+import com.joao01sb.mercadolibreapp.data.remote.model.category.ChannelSettings
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

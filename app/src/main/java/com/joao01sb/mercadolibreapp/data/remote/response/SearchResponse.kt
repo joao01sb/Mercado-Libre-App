@@ -1,6 +1,10 @@
-package com.joao01sb.mercadolibreapp.domain.model.search
+package com.joao01sb.mercadolibreapp.data.remote.response
 
-import com.joao01sb.mercadolibreapp.domain.model.product.ProductResponse
+import com.joao01sb.mercadolibreapp.data.remote.model.product.ResultProduct
+import com.joao01sb.mercadolibreapp.data.remote.model.search.Filter
+import com.joao01sb.mercadolibreapp.data.remote.model.search.Paging
+import com.joao01sb.mercadolibreapp.data.remote.model.search.PdpTracking
+import com.joao01sb.mercadolibreapp.data.remote.model.search.Sort
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -10,7 +14,7 @@ data class SearchResponse(
     @SerialName("country_default_time_zone") val countryDefaultTimeZone: String,
     @SerialName("query") val query: String,
     @SerialName("paging") val paging: Paging,
-    @SerialName("results") val results: List<ProductResponse>,
+    @SerialName("results") val resultProducts: List<ResultProduct>,
     @SerialName("sort") val sort: Sort,
     @SerialName("available_sorts") val availableSorts: List<Sort>,
     @SerialName("filters") val filters: List<Filter>,

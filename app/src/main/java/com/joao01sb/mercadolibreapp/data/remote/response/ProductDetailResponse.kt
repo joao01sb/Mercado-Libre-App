@@ -1,5 +1,10 @@
-package com.joao01sb.mercadolibreapp.domain.model.detail
+package com.joao01sb.mercadolibreapp.data.remote.response
 
+import com.joao01sb.mercadolibreapp.data.remote.model.detail.ProductDetailAttribute
+import com.joao01sb.mercadolibreapp.data.remote.model.detail.ProductDetailShipping
+import com.joao01sb.mercadolibreapp.data.remote.model.detail.ProductPicture
+import com.joao01sb.mercadolibreapp.data.remote.model.detail.SaleTerm
+import com.joao01sb.mercadolibreapp.data.remote.model.detail.SellerAddress
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

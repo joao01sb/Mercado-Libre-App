@@ -1,4 +1,4 @@
-package com.joao01sb.mercadolibreapp.domain.model.search
+package com.joao01sb.mercadolibreapp.data.remote.model.search
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

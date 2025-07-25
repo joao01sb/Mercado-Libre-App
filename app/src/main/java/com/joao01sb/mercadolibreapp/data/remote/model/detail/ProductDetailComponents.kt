@@ -1,6 +1,6 @@
-package com.joao01sb.mercadolibreapp.domain.model.detail
+package com.joao01sb.mercadolibreapp.data.remote.model.detail
 
-import com.joao01sb.mercadolibreapp.domain.model.product.AttributeValue
+import com.joao01sb.mercadolibreapp.data.remote.model.product.AttributeValue
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
