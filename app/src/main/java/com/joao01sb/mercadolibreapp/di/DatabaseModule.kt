@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import com.joao01sb.mercadolibreapp.data.local.dao.SearchHistoryDao
 import com.joao01sb.mercadolibreapp.data.local.database.MercadoLibreDatabase
+import com.joao01sb.mercadolibreapp.data.repository.SearchHistoryRepositoryImpl
+import com.joao01sb.mercadolibreapp.domain.repository.SearchHistoryRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,7 +28,12 @@ object DatabaseModule {
     }
 
     @Provides
-    fun provideSearchDao(
+    fun provideSearchHistoryDao(
         database: MercadoLibreDatabase
     ): SearchHistoryDao = database.searchHistoryDao
+
+    @Provides
+    fun provideSearchHistoryRepository(
+        searchHistoryDao: SearchHistoryDao
+    ): SearchHistoryRepository = SearchHistoryRepositoryImpl(searchHistoryDao)
 }
