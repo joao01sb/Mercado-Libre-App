@@ -19,6 +19,7 @@ import com.joao01sb.mercadolibreapp.presentation.ui.screen.SearchScreen
 import com.joao01sb.mercadolibreapp.presentation.ui.viewmodel.ProductDetailViewModel
 import com.joao01sb.mercadolibreapp.presentation.ui.viewmodel.SearchResultsViewModel
 import com.joao01sb.mercadolibreapp.presentation.ui.viewmodel.SearchViewModel
+import com.joao01sb.mercadolibreapp.presentation.util.UiState
 
 @Composable
 fun AppNavigation(
@@ -31,7 +32,7 @@ fun AppNavigation(
         composable<HomeRoute> {
             HomeScreen(
                 onSearchClick = {
-                    navController.navigate(SearchRoute)
+                    navController.navigate(SearchRoute())
                 }
             )
         }
@@ -49,26 +50,59 @@ fun AppNavigation(
                     searchViewModel.changedSearchProducts(newQuery)
                 },
                 onSearch = {
-                    searchViewModel.saveSearchQuery()
-                    navController.navigate(SearchResultsRoute(uiState.searchQuery))
+                    when (val currentState = uiState) {
+                        is UiState.Success -> {
+                            val query = currentState.data
+                            if (query.searchQuery.isNotBlank()) {
+                                searchViewModel.saveSearch(query.searchQuery)
+                                navController.navigate(SearchResultsRoute(query = query.searchQuery)) {
+                                    popUpTo(HomeRoute) {
+                                        saveState = false
+                                    }
+                                }
+                            }
+                        }
+                        else -> {}
+                    }
+                },
+                onRecentSearchClick = { query ->
+                    searchViewModel.changedSearchProducts(query)
+                    navController.navigate(SearchResultsRoute(query = query)) {
+                        popUpTo(HomeRoute) {
+                            saveState = false
+                        }
+                    }
                 }
             )
         }
 
-        composable<SearchResultsRoute> {
+        composable<SearchResultsRoute> { backStackEntry ->
             val searchResultsViewModel: SearchResultsViewModel = hiltViewModel()
             val uiState by searchResultsViewModel.uiState.collectAsState()
 
             SearchResultsScreen(
                 state = uiState,
-                onProductClick = { productId ->
-                    navController.navigate(ProductDetailRoute(productId = productId, query = uiState.query))
+                query = searchResultsViewModel.currentQuery ,
+                onProductClick = { productId, productJson ->
+                    navController.navigate(
+                        ProductDetailRoute(
+                            productId = productId,
+                            query = when (val currentState = uiState) {
+                                is UiState.Success -> currentState.data.query
+                                else -> ""
+                            },
+                            productJson = productJson
+                        )
+                    )
                 },
                 onBackClick = {
-                    navController.popBackStack()
+                    navController.popBackStack(HomeRoute, inclusive = false)
                 },
                 onSearchClick = {
-                    navController.navigate(SearchRoute)
+                    navController.navigate(SearchRoute(searchResultsViewModel.currentQuery))
+                },
+                onRetryClick = {
+                    searchResultsViewModel.retrySearch()
                 }
             )
         }
@@ -77,19 +111,18 @@ fun AppNavigation(
             val productDetailViewModel: ProductDetailViewModel = hiltViewModel()
             val uiState by productDetailViewModel.uiState.collectAsState()
 
-            uiState.productDetail?.let { productDetail ->
-                ProductDetailScreen(
-                    productDetail = productDetail,
-                    query = productDetailViewModel.query,
-                    productDescription = uiState.productDescription,
-                    onBackClick = {
-                        navController.popBackStack()
-                    },
-                    onSearchClick = {
-                        navController.navigate(SearchRoute)
-                    }
-                )
-            }
+            ProductDetailScreen(
+                state = uiState,
+                onBackClick = {
+                    navController.popBackStack()
+                },
+                onSearchClick = {
+                    navController.navigate(SearchRoute())
+                },
+                onRetryClick = {
+                    productDetailViewModel.retryLoadProduct()
+                }
+            )
         }
     }
 }

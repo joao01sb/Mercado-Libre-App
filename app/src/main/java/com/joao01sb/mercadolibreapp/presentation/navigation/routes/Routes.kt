@@ -6,7 +6,9 @@ import kotlinx.serialization.Serializable
 object HomeRoute
 
 @Serializable
-object SearchRoute
+data class SearchRoute(
+    val initialQuery: String = ""
+)
 
 @Serializable
 data class SearchResultsRoute(
@@ -16,5 +18,6 @@ data class SearchResultsRoute(
 @Serializable
 data class ProductDetailRoute(
     val productId: String,
-    val query: String
+    val query: String,
+    val productJson: String // JSON serializado do Product para passar via navegação
 )
