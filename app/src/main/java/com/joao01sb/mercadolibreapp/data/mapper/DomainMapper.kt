@@ -35,13 +35,10 @@ fun SearchResponse.toDomain(): List<Product> {
 }
 
 fun ProductDetailResponse.toDomain(): ProductDetail {
-    // Extrair marca dos atributos
     val brand = attributes.find { it.id == "BRAND" }?.valueName
 
-    // Extrair modelo dos atributos
     val model = attributes.find { it.id == "MODEL" }?.valueName
 
-    // Extrair garantia dos sale terms
     val warranty = saleTerms.find { it.id == "WARRANTY_TIME" }?.valueName
 
     return ProductDetail(
@@ -66,14 +63,14 @@ fun ProductDetailResponse.toDomain(): ProductDetail {
                 valueName = attr.valueName
             )
         },
-        rating = null, // Não disponível na resposta atual
-        reviewsCount = 0, // Não disponível na resposta atual
+        rating = null,
+        reviewsCount = 0,
         warranty = warranty,
         brand = brand,
         model = model,
-        installmentsQuantity = 1, // Seria necessário buscar das condições de pagamento
-        installmentsRate = 0.0, // Seria necessário buscar das condições de pagamento
-        tags = shipping.tags ?: emptyList()
+        installmentsQuantity = 1,
+        installmentsRate = 0.0,
+        tags = shipping.tags
     )
 }
 

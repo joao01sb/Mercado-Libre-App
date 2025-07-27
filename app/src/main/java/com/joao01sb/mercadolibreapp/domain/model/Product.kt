@@ -1,5 +1,8 @@
 package com.joao01sb.mercadolibreapp.domain.model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Product(
     val id: String,
     val title: String,
