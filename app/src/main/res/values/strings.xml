@@ -1,3 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Mercado Libre App</string>
+    <!-- App Name -->
+    <string name="app_name">MercadoLibre</string>
+
+    <!-- Navigation -->
+    <string name="back">Voltar</string>
+    <string name="back_button">Voltar</string>
+
+    <!-- Search -->
+    <string name="search">Buscar</string>
+    <string name="search_mercado_libre">Buscar no Mercado Livre</string>
+    <string name="search_placeholder">Buscar produtos, marcas e muito mais...</string>
+    <string name="searchQuery">Consulta de busca</string>
+    <string name="query">Consulta</string>
+    <string name="recent_searches">Buscas recentes</string>
+    <string name="no_recent_searches">Nenhuma busca recente</string>
+    <string name="location_brazil">Android, Brasil</string>
+
+    <!-- Search Results -->
+    <string name="no_results_title">Nenhum resultado encontrado</string>
+    <string name="no_results_found">Nenhum resultado encontrado</string>
+    <string name="search_error_title">Erro na busca</string>
+    <string name="try_again">Tentar novamente</string>
+
+    <!-- Product Details -->
+    <string name="loading_product_details">Carregando detalhes do produto...</string>
+    <string name="image_counter_format">%1$d / %2$d</string>
+    <string name="installments_simple_format">em %1$dx %2$s</string>
+    <string name="product_not_found">Produto não encontrado</string>
+    <string name="add_to_favorites">Adicionar aos favoritos</string>
+    <string name="free_shipping">Frete grátis</string>
+    <string name="quantity_format">Disponível: %1$d unidades</string>
+    <string name="description">Descrição</string>
+    <string name="specifications">Especificações</string>
+    <string name="buy_now">Comprar agora</string>
+    <string name="add_to_cart">Adicionar ao carrinho</string>
+    <string name="error_loading_product_details">Erro ao carregar detalhes do produto</string>
+
+    <!-- Currency & Price Formats -->
+    <string name="price_format">%1$s</string>
+    <string name="discount_format">%1$d%% OFF</string>
+    <string name="installments_format">em %1$dx de %2$s</string>
+
+    <!-- Common -->
+    <string name="favorite">Favorito</string>
+    <string name="share">Compartilhar</string>
+
+    <!-- New Product Detail Sections -->
+    <string name="category">Categoria</string>
+    <string name="general_category">Categoria geral</string>
+    <string name="product_information">Informações do produto</string>
+    <string name="condition">Condição</string>
+    <string name="availability">Disponibilidade</string>
+    <string name="shipping">Frete</string>
+    <string name="discount">Desconto</string>
+    <string name="product_details">Detalhes do produto</string>
+    <string name="product_id">ID do produto</string>
+    <string name="currency">Moeda</string>
+    <string name="view_on_mercadolibre">Ver no MercadoLibre</string>
+    <string name="see_full_details">Ver detalhes completos</string>
+    <string name="detailed_specs_not_available">Especificações detalhadas não disponíveis neste momento</string>
+
+    <!-- Additional strings from DetailsScreen -->
+    <string name="other_purchase_options">Outras opções de compra</string>
+    <string name="view_other_options">Ver outras opções</string>
+    <string name="product_characteristics">Características do produto</string>
+    <string name="view_all_characteristics">Ver todas as características</string>
+    <string name="seller_id_format">Vendedor ID: %1$d</string>
+    <string name="units_format">%1$d unidades</string>
+    <string name="free_label">Grátis</string>
+    <string name="rating_format">%1$.1f/5.0</string>
+    <string name="product_id_label">ID</string>
+    <string name="condition_label">Condição</string>
+    <string name="availability_label">Disponibilidade</string>
+    <string name="currency_label">Moeda</string>
+    <string name="shipping_label">Frete</string>
+    <string name="rating_label">Avaliação</string>
 </resources>
