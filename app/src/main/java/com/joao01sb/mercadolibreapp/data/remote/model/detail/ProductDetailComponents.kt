@@ -9,7 +9,7 @@ data class SaleTerm(
     @SerialName("id") val id: String,
     @SerialName("name") val name: String,
     @SerialName("value_id") val valueId: String? = null,
-    @SerialName("value_name") val valueName: String,
+    @SerialName("value_name") val valueName: String? = null,
     @SerialName("value_struct") val valueStruct: SaleTermStruct? = null,
     @SerialName("values") val values: List<SaleTermValue>,
     @SerialName("value_type") val valueType: String
@@ -94,7 +94,7 @@ data class ProductDetailAttribute(
     @SerialName("id") val id: String,
     @SerialName("name") val name: String,
     @SerialName("value_id") val valueId: String? = null,
-    @SerialName("value_name") val valueName: String,
+    @SerialName("value_name") val valueName: String? = null,
     @SerialName("values") val values: List<AttributeValue>,
     @SerialName("value_type") val valueType: String
 )
