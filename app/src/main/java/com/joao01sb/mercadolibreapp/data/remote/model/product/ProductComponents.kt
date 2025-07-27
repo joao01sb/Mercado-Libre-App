@@ -12,7 +12,7 @@ data class SalePrice(
     @SerialName("exchange_rate") val exchangeRate: Double? = null,
     @SerialName("payment_method_prices") val paymentMethodPrices: List<String> = emptyList(),
     @SerialName("payment_method_type") val paymentMethodType: String? = null,
-    @SerialName("regular_amount") val regularAmount: Double,
+    @SerialName("regular_amount") val regularAmount: Double? = null,
     @SerialName("type") val type: String,
     @SerialName("metadata") val metadata: SalePriceMetadata? = null
 )

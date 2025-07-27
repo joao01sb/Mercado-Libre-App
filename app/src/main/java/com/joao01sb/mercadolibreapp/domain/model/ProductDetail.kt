@@ -15,6 +15,13 @@ data class ProductDetail(
     val acceptsMercadoPago: Boolean,
     val freeShipping: Boolean = false,
     val availableQuantity: Int,
-    val attributes: List<ProductAttribute>
+    val attributes: List<ProductAttribute>,
+    val rating: Double? = null,
+    val reviewsCount: Int = 0,
+    val warranty: String? = null,
+    val brand: String? = null,
+    val model: String? = null,
+    val installmentsQuantity: Int = 1,
+    val installmentsRate: Double = 0.0,
+    val tags: List<String> = emptyList()
 )
-
