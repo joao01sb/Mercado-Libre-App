@@ -1,9 +1,7 @@
 package com.joao01sb.mercadolibreapp.di
 
-import com.joao01sb.mercadolibreapp.data.local.dao.SearchHistoryDao
 import com.joao01sb.mercadolibreapp.domain.datasource.RemoteDataSource
 import com.joao01sb.mercadolibreapp.data.repository.ProductRepositoryImpl
-import com.joao01sb.mercadolibreapp.data.repository.SearchHistoryRepositoryImpl
 import com.joao01sb.mercadolibreapp.domain.repository.ProductRepository
 import com.joao01sb.mercadolibreapp.domain.repository.SearchHistoryRepository
 import com.joao01sb.mercadolibreapp.domain.usecase.GetProductCategoryUseCase
@@ -28,12 +26,6 @@ object DomainModule {
         return ProductRepositoryImpl(remoteDataSource)
     }
 
-    @Provides
-    fun provideSearchHistoryRepository(
-        searchHistoryDao: SearchHistoryDao
-    ): SearchHistoryRepository {
-        return SearchHistoryRepositoryImpl(searchHistoryDao)
-    }
 
     @Provides
     fun provideSearchProductsUseCase(
