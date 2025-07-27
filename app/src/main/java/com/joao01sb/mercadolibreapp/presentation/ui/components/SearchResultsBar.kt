@@ -21,11 +21,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.joao01sb.mercadolibreapp.presentation.theme.Yellow
+import com.joao01sb.mercadolibreapp.R
 
 @Preview
 @Composable
@@ -97,7 +99,7 @@ fun SearchResultsBar(
             Spacer(modifier = Modifier.width(4.dp))
 
             Text(
-                text = "Android, Brasil",
+                text = stringResource(R.string.location_brazil),
                 color = Color.Black,
                 fontSize = 14.sp
             )

@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -31,11 +30,12 @@ import coil.request.ImageRequest
 import com.joao01sb.mercadolibreapp.R
 import com.joao01sb.mercadolibreapp.util.CurrencyUtils
 import com.joao01sb.mercadolibreapp.domain.model.Product
+import com.joao01sb.mercadolibreapp.presentation.theme.Green
 
 @Composable
 fun ProductItem(
     product: Product,
-    onClick: () -> Unit,
+    onClick: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
@@ -43,7 +43,7 @@ fun ProductItem(
     Card(
         modifier = modifier
             .height(320.dp)
-            .clickable { onClick() },
+            .clickable { onClick(product.id) },
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White),
         shape = RectangleShape
@@ -107,34 +107,6 @@ fun ProductItem(
 
                 Spacer(modifier = Modifier.height(4.dp))
 
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.height(16.dp)
-                ) {
-                    Text(
-                        text = "${product.rating ?: 5.0}",
-                        fontSize = 11.sp,
-                        color = Color.Black,
-                        fontWeight = FontWeight.Medium
-                    )
-                    Spacer(modifier = Modifier.width(3.dp))
-                    product.rating?.let {
-                        repeat(it.toInt().coerceAtMost(5)) { index ->
-                            Icon(
-                                Icons.Default.Star,
-                                contentDescription = null,
-                                tint = if (index < (product.rating?.toInt() ?: 5))
-                                    Color(0xFFFFC107)
-                                else
-                                    Color.Gray.copy(alpha = 0.3f),
-                                modifier = Modifier.size(10.dp)
-                            )
-                        }
-                    }
-                }
-
-                Spacer(modifier = Modifier.height(6.dp))
-
                 Column {
                     if (CurrencyUtils.hasDiscount(product.price, product.originalPrice)) {
                         product.originalPrice?.let { originalPrice ->
@@ -171,8 +143,8 @@ fun ProductItem(
                             )
                             Text(
                                 text = CurrencyUtils.formatDiscount(context, discount),
-                                fontSize = 11.sp,
-                                color = Color(0xFF00A650),
+                                fontSize = 14.sp,
+                                color = Green,
                                 fontWeight = FontWeight.Bold
                             )
                         }
@@ -186,15 +158,15 @@ fun ProductItem(
                             installmentValue,
                             product.currencyId
                         ),
-                        fontSize = 10.sp,
-                        color = Color.Green,
+                        fontSize = 14.sp,
+                        color = Green,
                         maxLines = 1
                     )
 
                     Text(
                         text = stringResource(R.string.free_shipping),
-                        fontSize = 10.sp,
-                        color = Color.Green,
+                        fontSize = 14.sp,
+                        color = Green,
                         fontWeight = FontWeight.Bold,
                         maxLines = 1
                     )

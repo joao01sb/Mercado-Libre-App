@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-private fun CustomPagerIndicator(
+fun CustomPagerIndicator(
     pagerState: PagerState,
     modifier: Modifier = Modifier,
     activeColor: Color = Color.Blue,

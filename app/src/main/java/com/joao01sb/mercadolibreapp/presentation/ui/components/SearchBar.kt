@@ -20,16 +20,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.joao01sb.mercadolibreapp.R
 import com.joao01sb.mercadolibreapp.presentation.theme.BlackLabel
 import com.joao01sb.mercadolibreapp.presentation.theme.Yellow
 
 @Preview
 @Composable
 fun SearchBar(
-    label: String = "",
     onSearchClick: () -> Unit = {}
 ) {
     Column(
@@ -56,7 +57,7 @@ fun SearchBar(
 
                 Icon(
                     imageVector = Icons.Default.Search,
-                    contentDescription = "Search",
+                    contentDescription = stringResource(R.string.search),
                     tint = Color.Gray,
                     modifier = Modifier.size(20.dp)
                 )
@@ -64,7 +65,7 @@ fun SearchBar(
                 Spacer(modifier = Modifier.width(8.dp))
 
                 Text(
-                    text = label,
+                    text = stringResource(R.string.search_mercado_libre),
                     color = Color.Gray,
                     fontSize = 14.sp
                 )
@@ -81,7 +82,7 @@ fun SearchBar(
         ) {
             Icon(
                 imageVector = Icons.Default.LocationOn,
-                contentDescription = "Location",
+                contentDescription = stringResource(R.string.back),
                 tint = BlackLabel,
                 modifier = Modifier.size(16.dp)
             )
@@ -89,7 +90,7 @@ fun SearchBar(
             Spacer(modifier = Modifier.width(4.dp))
 
             Text(
-                text = "Android, Brasil",
+                text = stringResource(R.string.location_brazil),
                 color = BlackLabel,
                 fontSize = 14.sp
             )
