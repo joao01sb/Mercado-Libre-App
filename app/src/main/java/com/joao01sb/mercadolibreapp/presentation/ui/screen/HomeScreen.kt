@@ -10,7 +10,6 @@ import com.joao01sb.mercadolibreapp.presentation.ui.components.SearchBar
 @Preview
 @Composable
 fun HomeScreen(
-    labelSearch: String = "",
     onSearchClick: () -> Unit = {}
 ) {
 
@@ -18,7 +17,6 @@ fun HomeScreen(
         modifier = Modifier.fillMaxSize()
     ) {
         SearchBar(
-            label = labelSearch,
             onSearchClick = onSearchClick
         )
     }
