@@ -25,6 +25,7 @@ class ApiServiceImp(
         ignoreUnknownKeys = true
         isLenient = true
         coerceInputValues = true
+        encodeDefaults = true
     }
 
     private val fileReader = AssetFileReader(context)
