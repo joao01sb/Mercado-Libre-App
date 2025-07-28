@@ -1,5 +1,8 @@
-
 import com.joao01sb.mercadolibreapp.domain.model.Product
+import com.joao01sb.mercadolibreapp.domain.model.ProductDetail
+import com.joao01sb.mercadolibreapp.domain.model.Category
+import com.joao01sb.mercadolibreapp.domain.model.ProductAttribute
+import com.joao01sb.mercadolibreapp.presentation.ui.state.ProductDetailUiData
 
 object ProductDataTest {
     val mockProducts = listOf(
@@ -98,5 +101,61 @@ object ProductDataTest {
             isSponsored = false,
             reviewsCount = 623
         )
+    )
+
+    val mockProductDetail = ProductDetail(
+        id = mockProducts.first().id,
+        title = mockProducts.first().title,
+        price = mockProducts.first().price,
+        originalPrice = mockProducts.first().originalPrice,
+        currencyId = mockProducts.first().currencyId,
+        condition = mockProducts.first().condition,
+        thumbnail = mockProducts.first().thumbnail,
+        pictures = listOf(
+            mockProducts.first().thumbnail,
+            "https://example.com/iphone2.jpg",
+            "https://example.com/iphone3.jpg"
+        ),
+        permalink = mockProducts.first().permalink,
+        categoryId = mockProducts.first().categoryId ?: "MLA1055",
+        sellerId = mockProducts.first().sellerId ?: 123456789,
+        acceptsMercadoPago = true,
+        freeShipping = mockProducts.first().freeShipping,
+        availableQuantity = mockProducts.first().availableQuantity,
+        attributes = listOf(
+            ProductAttribute(id = "BRAND", name = "Marca", valueName = "Apple"),
+            ProductAttribute(id = "MODEL", name = "Modelo", valueName = "13 Pro Max")
+        ),
+        rating = mockProducts.first().rating,
+        reviewsCount = mockProducts.first().reviewsCount,
+        warranty = "Garantía de fábrica: 12 meses",
+        brand = "Apple",
+        model = "13 Pro Max",
+        installmentsQuantity = mockProducts.first().installmentsQuantity,
+        installmentsRate = mockProducts.first().installmentsRate,
+        tags = listOf("good_quality_picture", "immediate_payment")
+    )
+
+    val mockCategory = Category(
+        id = "MLA1055",
+        name = "Celulares y Smartphones",
+        picture = "https://example.com/category.png",
+        totalItems = 25000
+    )
+
+    val mockProductDetailUiDataWithDescription = ProductDetailUiData(
+        baseProduct = mockProducts.first(),
+        productDetail = mockProductDetail,
+        description = "Esta é uma descrição detalhada do produto ${mockProducts.first().title} com todas as especificações técnicas.",
+        category = mockCategory,
+        query = "iphone"
+    )
+
+    val mockProductDetailUiDataWithoutDescription = ProductDetailUiData(
+        baseProduct = mockProducts.first(),
+        productDetail = mockProductDetail,
+        description = null,
+        category = mockCategory,
+        query = "iphone"
     )
 }
