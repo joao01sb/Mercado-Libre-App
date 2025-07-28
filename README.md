@@ -2,6 +2,12 @@
 
 A modern Android application that allows users to search and view product details using MercadoLibre's APIs. Built with Jetpack Compose following Clean Architecture principles and MVVM pattern.
 
+## ⚠️ Important Note
+
+**Mock Data Implementation**: This project currently uses local JSON files stored in the `assets` folder to simulate MercadoLibre API responses. This approach was chosen due to authentication limitations with the official MercadoLibre API for this challenge. The architecture is fully prepared to integrate with real API endpoints - only the data source implementation would need to be updated.
+
+The mock data includes realistic product information, categories, and search results that demonstrate all the app's functionality as if connected to the actual MercadoLibre API.
+
 ## 📱 Screenshots
 
 | Home Screen | Search Screen | Search Results | Product Details |
