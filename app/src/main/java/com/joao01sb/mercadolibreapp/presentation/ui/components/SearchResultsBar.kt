@@ -21,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -48,7 +49,9 @@ fun SearchResultsBar(
         ) {
             IconButton(
                 onClick = onBackClick,
-                modifier = Modifier.size(40.dp)
+                modifier = Modifier
+                    .size(40.dp)
+                    .testTag("back_button")
             ) {
                 Icon(
                     imageVector = Icons.Default.ArrowBack,
@@ -68,7 +71,8 @@ fun SearchResultsBar(
                         shape = RoundedCornerShape(24.dp)
                     )
                     .clickable { onSearchClick() }
-                    .padding(horizontal = 12.dp, vertical = 10.dp),
+                    .padding(horizontal = 12.dp, vertical = 10.dp)
+                    .testTag("search_bar"),
                 verticalAlignment = Alignment.CenterVertically
             ) {
 
