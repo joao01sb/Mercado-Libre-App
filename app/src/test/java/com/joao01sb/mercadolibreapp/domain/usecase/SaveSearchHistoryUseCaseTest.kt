@@ -43,50 +43,56 @@ class SaveSearchHistoryUseCaseTest {
     @Test
     fun `invoke should return success when saving valid query`() = runTest {
         val query = "iphone 13"
-
         coEvery { repository.saveSearchHistory(query) } returns Unit
 
         val result = useCase.invoke(query)
 
-        assertTrue("Should be Success", result is ResultUseCase.Success)
-        assertEquals(Unit, (result as ResultUseCase.Success).data)
-
-        coVerify(exactly = 1) { repository.saveSearchHistory(query) }
-
-        verify { Log.d("SaveSearchHistoryUseCase", "invoke: Starting to save search query: $query") }
-        verify { Log.d("SaveSearchHistoryUseCase", "invoke: Successfully saved search query: $query") }
+        assertTrue(result is ResultUseCase.Success)
+        coVerify { repository.saveSearchHistory(query) }
+        verify { Log.d("SaveSearchHistoryUseCase", "invoke: Attempting to save search query='$query'") }
+        verify { Log.d("SaveSearchHistoryUseCase", "invoke: Query is valid, saving to repository") }
+        verify { Log.d("SaveSearchHistoryUseCase", "invoke: Successfully saved search query") }
     }
 
     @Test
     fun `invoke should return error when query is blank`() = runTest {
-        val blankQuery = ""
+        val query = ""
 
-        val result = useCase.invoke(blankQuery)
+        val result = useCase.invoke(query)
 
-        assertTrue("Should be Error", result is ResultUseCase.Error)
+        assertTrue(result is ResultUseCase.Error)
         assertEquals("Search query cannot be empty", (result as ResultUseCase.Error).message)
-
         coVerify(exactly = 0) { repository.saveSearchHistory(any()) }
+        verify { Log.d("SaveSearchHistoryUseCase", "invoke: Attempting to save search query='$query'") }
+        verify { Log.w("SaveSearchHistoryUseCase", "invoke: Query is blank, cannot save") }
+    }
 
-        verify { Log.d("SaveSearchHistoryUseCase", "invoke: Starting to save search query: $blankQuery") }
-        verify { Log.w("SaveSearchHistoryUseCase", "invoke: Query validation failed - empty or blank query") }
+    @Test
+    fun `invoke should return error when query is whitespace only`() = runTest {
+        val query = "   "
+
+        val result = useCase.invoke(query)
+
+        assertTrue(result is ResultUseCase.Error)
+        assertEquals("Search query cannot be empty", (result as ResultUseCase.Error).message)
+        coVerify(exactly = 0) { repository.saveSearchHistory(any()) }
+        verify { Log.d("SaveSearchHistoryUseCase", "invoke: Attempting to save search query='$query'") }
+        verify { Log.w("SaveSearchHistoryUseCase", "invoke: Query is blank, cannot save") }
     }
 
     @Test
     fun `invoke should return error when repository throws exception`() = runTest {
         val query = "samsung galaxy"
-        val exception = SQLException("Database connection failed")
-
+        val exception = SQLException("Database error")
         coEvery { repository.saveSearchHistory(query) } throws exception
 
         val result = useCase.invoke(query)
 
-        assertTrue("Should be Error", result is ResultUseCase.Error)
-        assertEquals("Failed to save search history: Database connection failed", (result as ResultUseCase.Error).message)
-
-        coVerify(exactly = 1) { repository.saveSearchHistory(query) }
-
-        verify { Log.d("SaveSearchHistoryUseCase", "invoke: Starting to save search query: $query") }
-        verify { Log.e("SaveSearchHistoryUseCase", "invoke: Error saving search history for query: $query", exception) }
+        assertTrue(result is ResultUseCase.Error)
+        assertEquals("Failed to save search history: Database error", (result as ResultUseCase.Error).message)
+        coVerify { repository.saveSearchHistory(query) }
+        verify { Log.d("SaveSearchHistoryUseCase", "invoke: Attempting to save search query='$query'") }
+        verify { Log.d("SaveSearchHistoryUseCase", "invoke: Query is valid, saving to repository") }
+        verify { Log.e("SaveSearchHistoryUseCase", "invoke: Failed to save search history", exception) }
     }
 }
