@@ -31,6 +31,7 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
@@ -78,7 +79,10 @@ fun SearchScreen(
                             .padding(horizontal = 8.dp, vertical = 4.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        IconButton(onClick = onBackClick) {
+                        IconButton(
+                            onClick = onBackClick,
+                            modifier = Modifier.testTag("back_button")
+                        ) {
                             Icon(
                                 Icons.Default.ArrowBack,
                                 contentDescription = stringResource(R.string.back_button),
@@ -100,7 +104,8 @@ fun SearchScreen(
                             },
                             modifier = Modifier
                                 .weight(1f)
-                                .focusRequester(focusRequester),
+                                .focusRequester(focusRequester)
+                                .testTag("search_text_field"),
                             placeholder = {
                                 Text(
                                     text = stringResource(R.string.search_mercado_libre),
