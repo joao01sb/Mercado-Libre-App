@@ -451,6 +451,25 @@ object MockProductData {
             installmentsRate = 0.0,
             sellerId = 987654321,
             categoryId = "MLA1055"
+        ),
+        Product(
+            id = "MLA2005705456",
+            title = "Xiaomi Redmi Note 10 64GB Branco",
+            price = 299990.0,
+            currencyId = "ARS",
+            thumbnail = "http://http2.mlstatic.com/D_654321-MLA2005705456_032023-O.jpg",
+            condition = "new",
+            availableQuantity = 50,
+            permalink = "https://articulo.mercadolibre.com.ar/MLA-2005705456-xiaomi-redmi-note-10-64gb-branco-_JM",
+            originalPrice = 349990.0,
+            freeShipping = true,
+            rating = 4.5,
+            reviewsCount = 500,
+            isSponsored = false,
+            installmentsQuantity = 3,
+            installmentsRate = 0.0,
+            sellerId = 1234567890,
+            categoryId = "MLA1055"
         )
     )
 

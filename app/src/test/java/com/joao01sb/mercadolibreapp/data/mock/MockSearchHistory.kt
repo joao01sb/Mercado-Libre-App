@@ -16,6 +16,8 @@ object MockSearchHistory {
         SearchHistory(query = "macbook pro", timestamp = 1672704000000L)
     )
 
+    val mockSearchHistoryToString = mockSearchHistoryDomain.map { it.query }
+
     val singleSearchHistoryEntity = listOf(
         SearchHistoryEntity(query = "única busca", timestamp = System.currentTimeMillis())
     )
