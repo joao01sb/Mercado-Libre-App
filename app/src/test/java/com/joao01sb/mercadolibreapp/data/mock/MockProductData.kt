@@ -323,7 +323,6 @@ object MockProductData {
         )
     )
 
-    // Mock para ProductDescriptionResponse
     val mockProductDescriptionResponse = ProductDescriptionResponse(
         text = "iPhone 13 Pro Max com tela Super Retina XDR de 6,7 polegadas",
         plainText = "iPhone 13 Pro Max com tela Super Retina XDR de 6,7 polegadas, sistema de câmera Pro com teleobjetiva",
@@ -432,6 +431,25 @@ object MockProductData {
             installmentsQuantity = 6,
             installmentsRate = 0.0,
             sellerId = 123456789,
+            categoryId = "MLA1055"
+        ),
+        Product(
+            id = "MLA2005705455",
+            title = "Samsung Galaxy S21 128GB Preto",
+            price = 749990.0,
+            currencyId = "ARS",
+            thumbnail = "http://http2.mlstatic.com/D_123456-MLA2005705455_032023-O.jpg",
+            condition = "new",
+            availableQuantity = 20,
+            permalink = "https://articulo.mercadolibre.com.ar/MLA-2005705455-samsung-galaxy-s21-128gb-preto-_JM",
+            originalPrice = 849990.0,
+            freeShipping = true,
+            rating = 4.7,
+            reviewsCount = 800,
+            isSponsored = false,
+            installmentsQuantity = 6,
+            installmentsRate = 0.0,
+            sellerId = 987654321,
             categoryId = "MLA1055"
         )
     )
