@@ -158,10 +158,10 @@ private fun ProductDetailContent(
         }
 
         item {
-            if (description != null) {
-                DescriptionSection(description = description)
-            } else {
+            if (description.isNullOrBlank()) {
                 ProductBasicInfoSection(product = product)
+            } else {
+                DescriptionSection(description = description)
             }
         }
 
