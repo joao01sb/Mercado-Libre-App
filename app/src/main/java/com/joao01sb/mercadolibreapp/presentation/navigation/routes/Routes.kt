@@ -19,5 +19,5 @@ data class SearchResultsRoute(
 data class ProductDetailRoute(
     val productId: String,
     val query: String,
-    val productJson: String // JSON serializado do Product para passar via navegação
+    val productJson: String
 )

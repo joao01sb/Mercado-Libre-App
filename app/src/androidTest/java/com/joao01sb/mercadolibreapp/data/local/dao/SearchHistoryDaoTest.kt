@@ -94,7 +94,6 @@ class SearchHistoryDaoTest {
 
     @Test
     fun getRecentSearchHistory_shouldLimitToTenResults() = runTest {
-        // Insert 12 search queries
         repeat(12) { index ->
             val search = SearchHistoryEntity("search $index", 1640995000000L + index)
             dao.insertSearchHistory(search)
@@ -103,7 +102,6 @@ class SearchHistoryDaoTest {
         dao.getRecentSearchHistory().test {
             val result = awaitItem()
             assertEquals(10, result.size)
-            // Should contain the 10 most recent (highest timestamp)
             assertEquals("search 11", result[0].query)
             assertEquals("search 10", result[1].query)
             assertEquals("search 2", result[9].query)
